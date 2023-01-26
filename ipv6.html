@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IPv6 Test</title>
+  <style>
+    body {
+      background-color: #f1f1f1;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #0066cc;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>IPv6 Test</h1>
+  <p id="result">Checking IPv6 connectivity...</p>
+
+  <script>
+    function checkIPv6() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://ipv6.google.com', true);
+      xhr.onload = function() {
+        if (xhr.status == 200) {
+          document.getElementById('result').innerHTML = '<span style="color: green;">Your device has IPv6 connectivity!</span>';
+        } else {
+          document.getElementById('result').innerHTML = '<span style="color: red;">Your device does not have IPv6 connectivity.</span>';
+        }
+      };
+      xhr.onerror = function() {
+        document.getElementById('result').innerHTML = '<span style="color: red;">Your device does not have IPv6 connectivity.</span>';
+      };
+      xhr.send();
+    }
+
+    checkIPv6();
+  </script>
+</body>
+</html>
