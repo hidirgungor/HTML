@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sistem Temasına Göre Sayfa Rengi</title>
+	<style>
+		body {
+			background-color: white;
+			color: black;
+		}
+
+		body.dark-mode {
+			background-color: black;
+			color: white;
+		}
+	</style>
+	<script>
+		// Sistemin temasını kontrol etmek için bir medya sorgusu oluşturun
+		const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+
+		// Tema değiştiğinde sayfa rengini güncelleyin
+		function updateTheme() {
+			if (prefersDarkMode.matches) {
+				document.body.classList.add("dark-mode");
+			} else {
+				document.body.classList.remove("dark-mode");
+			}
+		}
+
+		// Sayfa yüklendiğinde ve tema değiştiğinde tema kontrolünü güncelleyin
+		window.addEventListener("load", updateTheme);
+		prefersDarkMode.addEventListener("change", updateTheme);
+	</script>
+</head>
+<body>
+	<h1>Sistem Temasına Göre Sayfa Rengi</h1>
+	<p>Bu bir örnek sayfadır.</p>
+</body>
+</html>
